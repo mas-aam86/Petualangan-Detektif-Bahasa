@@ -1,0 +1,1264 @@
+::Petualangan Detektif Bahasa Kelas 5:index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Petualangan Detektif Bahasa - Kelas 5 SD</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka & Quicksand (Sangat ramah anak dan ceria) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+    }
+    .font-bubble {
+      font-family: 'Fredoka', sans-serif;
+    }
+    /* Animasi goyang lembut untuk ikon dan mascot */
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .mascot-bounce {
+      animation: gentle-bounce 3s ease-in-out infinite;
+    }
+    /* Gradasi warna-warni yang mengesankan */
+    .rainbow-bg {
+      background: linear-gradient(135deg, #FF9EAA 0%, #FFD09B 25%, #FFEBAD 50%, #B9F3FC 75%, #D6A2E8 100%);
+    }
+    /* Custom scrollbar untuk kenyamanan visual */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-indigo-50 via-teal-50 to-pink-50 min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden antialiased">
+
+  <!-- Header Utama -->
+  <header class="bg-white/80 backdrop-blur-md shadow-md border-b-4 border-yellow-300 sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl md:text-4xl mascot-bounce">🕵️‍♂️</span>
+        <div>
+          <h1 class="font-bubble text-2xl md:text-3xl font-bold bg-gradient-to-r from-teal-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Detektif Bahasa</h1>
+          <p class="text-xs md:text-sm font-semibold text-slate-500">Misi Analisis Informasi, Ide Pokok & Menyusun Ringkasan • Kelas 5</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="btn-sound-toggle" onclick="toggleMute()" class="p-2 bg-yellow-100 hover:bg-yellow-200 text-yellow-700 font-bold rounded-full transition-all text-xl" title="Nyalakan/Matikan Suara">
+          🔊
+        </button>
+        <span class="px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-400 text-white font-bubble font-bold text-sm md:text-base rounded-full shadow-md border-b-4 border-orange-600">
+          🎯 Level: Kelas 5 Hebat!
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Konten Utama: Ditangani dinamis dengan Javascript Switch Page -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6 md:py-10">
+    
+    <!-- ---------------- PAGE 1: BERANDA / HOME ---------------- -->
+    <section id="page-home" class="space-y-8 animate-fade-in">
+      <div class="bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-400 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden border-b-8 border-teal-600">
+        <!-- Dekorasi Awan di Background -->
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
+        
+        <div class="relative grid md:grid-cols-3 gap-6 items-center">
+          <div class="md:col-span-2 space-y-4">
+            <span class="px-3 py-1 bg-yellow-300 text-teal-900 font-bold text-xs rounded-full uppercase tracking-wider">Misi Belajar Kurikulum Merdeka</span>
+            <h2 class="font-bubble text-3xl md:text-5xl font-extrabold leading-tight">Selamat Datang, Detektif Cilik! 🌟</h2>
+            <p class="text-base md:text-lg text-white/95 font-medium leading-relaxed">
+              Masyarakat membutuhkan bantuanmu! Banyak teks misterius yang kehilangan rahasianya. Mari kita pecahkan misteri informasi, temukan ide pokok seperti akar pohon, dan kuasai seni meringkas penjelasan yang kita dengar!
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <button onclick="switchPage('learn')" class="px-6 py-3 bg-yellow-300 hover:bg-yellow-400 active:scale-95 transition-all text-slate-900 font-bubble font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl border-b-4 border-yellow-600 flex items-center gap-2">
+                📖 Mulai Petualangan Belajar
+              </button>
+              <button onclick="startQuizDirectly()" class="px-6 py-3 bg-pink-500 hover:bg-pink-600 active:scale-95 transition-all text-white font-bubble font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl border-b-4 border-pink-700 flex items-center gap-2">
+                🎮 Main Game Evaluasi (20 Soal)
+              </button>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <div class="text-center mascot-bounce bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/30 shadow-inner w-56">
+              <span class="text-8xl block mb-2">🕵️‍♂️🔎</span>
+              <span class="bg-yellow-300 text-slate-900 px-3 py-1 rounded-full text-xs font-bold font-bubble">Diko Si Detektif</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Peta Rencana Pembelajaran Visual (Warna-warni Penuh Imajinasi) -->
+      <div class="space-y-4">
+        <h3 class="font-bubble text-2xl md:text-3xl text-slate-800 text-center font-bold">🗺️ Peta Gerbang Kompetensi Detektif</h3>
+        <p class="text-center text-slate-600 max-w-2xl mx-auto -mt-2">Ketuk setiap petunjuk jalan di bawah untuk mempelajari materi hebat di kelas 5 ini secara asyik!</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 pt-4">
+          <!-- Kartu Materi 1 -->
+          <div class="bg-white rounded-2xl p-6 border-b-8 border-pink-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 bg-pink-100 rounded-full flex items-center justify-center text-3xl mb-4 shadow-inner">🔍</div>
+              <h4 class="font-bubble text-xl font-bold text-slate-800 mb-2">1. Analisis Informasi Teks</h4>
+              <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                Mencari harta karun informasi tersembunyi dengan alat detektif super kita: <strong>ADiKSiMBa</strong> (Apa, Di mana, Kapan, Siapa, Mengapa, Bagaimana)!
+              </p>
+            </div>
+            <button onclick="switchPage('learn'); showLearnTopic(1);" class="w-full py-2 bg-pink-50 hover:bg-pink-100 text-pink-600 font-bold rounded-xl transition-all text-sm border border-pink-200">
+              Buka Petunjuk Belajar &rarr;
+            </button>
+          </div>
+
+          <!-- Kartu Materi 2 -->
+          <div class="bg-white rounded-2xl p-6 border-b-8 border-amber-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 bg-amber-100 rounded-full flex items-center justify-center text-3xl mb-4 shadow-inner">🌳</div>
+              <h4 class="font-bubble text-xl font-bold text-slate-800 mb-2">2. Ide Pokok & Pendukung</h4>
+              <h5 class="text-xs text-amber-600 font-bold mb-2">Gagasan Utama vs Penjelas</h5>
+              <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                Belajar membayangkan paragraf seperti pohon rindang. Batang utama adalah Ide Pokok, cabang-cabang dan daun adalah Ide Pendukungnya!
+              </p>
+            </div>
+            <button onclick="switchPage('learn'); showLearnTopic(2);" class="w-full py-2 bg-amber-50 hover:bg-amber-100 text-amber-600 font-bold rounded-xl transition-all text-sm border border-amber-200">
+              Buka Petunjuk Belajar &rarr;
+            </button>
+          </div>
+
+          <!-- Kartu Materi 3 -->
+          <div class="bg-white rounded-2xl p-6 border-b-8 border-emerald-400 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center text-3xl mb-4 shadow-inner">📝</div>
+              <h4 class="font-bubble text-xl font-bold text-slate-800 mb-2">3. Menyusun Ringkasan</h4>
+              <h5 class="text-xs text-emerald-600 font-bold mb-2">Berdasarkan Penjelasan Lisan</h5>
+              <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+                Melatih telinga detektifmu untuk mendengar penjelasan, menangkap kata kunci penting, lalu menyusunnya kembali menjadi ringkasan yang singkat dan padat!
+              </p>
+            </div>
+            <button onclick="switchPage('learn'); showLearnTopic(3);" class="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 font-bold rounded-xl transition-all text-sm border border-emerald-200">
+              Buka Petunjuk Belajar &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------- PAGE 2: RUANG BELAJAR VISUAL ---------------- -->
+    <section id="page-learn" class="hidden space-y-6 animate-fade-in">
+      <!-- Tombol Kembali -->
+      <button onclick="switchPage('home')" class="px-4 py-2 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-xl shadow-sm border border-slate-200 transition-all flex items-center gap-2 text-sm">
+        ⬅️ Kembali ke Beranda
+      </button>
+
+      <!-- Navigasi Tab Pembelajaran (Sangat interaktif & Berwarna-warni) -->
+      <div class="flex flex-wrap gap-2 border-b-2 border-slate-200 pb-2">
+        <button id="tab-btn-1" onclick="showLearnTopic(1)" class="px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-pink-500 text-white shadow-md">
+          <span>🔍</span> 1. Alat ADiKSiMBa
+        </button>
+        <button id="tab-btn-2" onclick="showLearnTopic(2)" class="px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-slate-100 text-slate-600">
+          <span>🌳</span> 2. Pohon Gagasan
+        </button>
+        <button id="tab-btn-3" onclick="showLearnTopic(3)" class="px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-slate-100 text-slate-600">
+          <span>📢</span> 3. Detektif Ringkasan Lisan
+        </button>
+      </div>
+
+      <!-- AREA MATERI 1: ADiKSiMBa -->
+      <div id="materi-content-1" class="space-y-6 animate-fade-in">
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-xl space-y-6">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4 border-b pb-4">
+            <span class="text-5xl">🔭</span>
+            <div>
+              <h3 class="font-bubble text-2xl md:text-3xl text-slate-800 font-bold">Misi 1: Menganalisis Informasi dari Teks</h3>
+              <p class="text-sm text-slate-500">Mempelajari cara jitu mencerna seluruh isi teks bacaan dengan kata tanya sakti.</p>
+            </div>
+          </div>
+
+          <p class="text-slate-600 leading-relaxed">
+            Menjadi detektif bahasa berarti kita harus jeli membaca! Setiap kali membaca paragraf, ada 6 pertanyaan ajaib bernama <strong>ADiKSiMBa (5W + 1H)</strong> yang siap membantu kita membongkar seluruh rahasia informasi teks:
+          </p>
+
+          <!-- Interactive Flower/Bubble ADiKSiMBa -->
+          <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
+            <div onclick="showAdiksimbaDetail('apa')" class="cursor-pointer bg-red-100 hover:bg-red-200 border-2 border-red-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">🎁</span>
+              <span class="font-bubble font-bold text-red-800 block text-lg">Apa</span>
+              <span class="text-xs text-slate-500">Menanyakan keadaan, benda, atau peristiwa.</span>
+            </div>
+            <div onclick="showAdiksimbaDetail('dimana')" class="cursor-pointer bg-orange-100 hover:bg-orange-200 border-2 border-orange-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">📍</span>
+              <span class="font-bubble font-bold text-orange-800 block text-lg">Di mana</span>
+              <span class="text-xs text-slate-500">Menanyakan lokasi atau tempat kejadian.</span>
+            </div>
+            <div onclick="showAdiksimbaDetail('kapan')" class="cursor-pointer bg-yellow-100 hover:bg-yellow-200 border-2 border-yellow-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">⏰</span>
+              <span class="font-bubble font-bold text-yellow-800 block text-lg">Kapan</span>
+              <span class="text-xs text-slate-500">Menanyakan waktu (hari, jam, tahun).</span>
+            </div>
+            <div onclick="showAdiksimbaDetail('siapa')" class="cursor-pointer bg-emerald-100 hover:bg-emerald-200 border-2 border-emerald-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">🧒</span>
+              <span class="font-bubble font-bold text-emerald-800 block text-lg">Siapa</span>
+              <span class="text-xs text-slate-500">Menanyakan orang, tokoh, atau pelaku.</span>
+            </div>
+            <div onclick="showAdiksimbaDetail('mengapa')" class="cursor-pointer bg-indigo-100 hover:bg-indigo-200 border-2 border-indigo-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">❓</span>
+              <span class="font-bubble font-bold text-indigo-800 block text-lg">Mengapa</span>
+              <span class="text-xs text-slate-500">Menanyakan alasan atau penyebab terjadi.</span>
+            </div>
+            <div onclick="showAdiksimbaDetail('bagaimana')" class="cursor-pointer bg-purple-100 hover:bg-purple-200 border-2 border-purple-300 p-4 rounded-2xl text-center transform hover:scale-105 active:scale-95 transition-all shadow-sm">
+              <span class="text-3xl block mb-1">⚙️</span>
+              <span class="font-bubble font-bold text-purple-800 block text-lg">Bagaimana</span>
+              <span class="text-xs text-slate-500">Menanyakan cara, proses, atau kondisi.</span>
+            </div>
+          </div>
+
+          <!-- Detail Interactive Box -->
+          <div id="adiksimba-detail-box" class="p-5 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 transition-all duration-300">
+            <h4 class="font-bubble text-lg font-bold text-indigo-700 flex items-center gap-2">
+              💡 Ketuk salah satu gelembung berwarna-warni di atas!
+            </h4>
+            <p class="text-sm text-slate-600 mt-2">Diko si detektif akan menunjukkan rahasia cara menggunakannya saat membaca teks.</p>
+          </div>
+
+          <!-- Contoh Teks Latihan Visual -->
+          <div class="bg-gradient-to-br from-pink-50 to-indigo-50 border-4 border-double border-pink-200 rounded-3xl p-5 md:p-6 space-y-3">
+            <h4 class="font-bubble font-bold text-pink-700 text-lg">🔍 Mari Latihan Membaca Kasus:</h4>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm text-sm md:text-base leading-relaxed">
+              "<strong>Komodo</strong> adalah kadal purba raksasa yang hidup di <strong>Taman Nasional Komodo, Nusa Tenggara Timur</strong>. Hewan ini dinyatakan langka <strong>karena jumlahnya yang makin sedikit akibat hilangnya habitat alami</strong>. Oleh karena itu, pemerintah mendirikan balai konservasi <strong>sejak tahun 1980</strong> untuk melindungi satwa istimewa ini agar terhindar dari kepunahan."
+            </div>
+            <p class="text-xs text-slate-500 italic">Coba cari informasi di atas menggunakan ADiKSiMBa. Sangat mudah, kan? Semuanya tertulis jelas!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AREA MATERI 2: POHON GAGASAN -->
+      <div id="materi-content-2" class="hidden space-y-6 animate-fade-in">
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-xl space-y-6">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4 border-b pb-4">
+            <span class="text-5xl">🌳</span>
+            <div>
+              <h3 class="font-bubble text-2xl md:text-3xl text-slate-800 font-bold">Misi 2: Mengupas Ide Pokok & Ide Pendukung</h3>
+              <p class="text-sm text-slate-500">Membayangkan sebuah paragraf bagaikan pohon yang rindang nan kokoh.</p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 items-center">
+            <!-- Representasi Visual Pohon -->
+            <div class="bg-gradient-to-tr from-lime-100 to-green-50 p-6 rounded-3xl border border-lime-200 text-center relative shadow-sm overflow-hidden">
+              <div class="absolute top-2 right-2 text-xs bg-lime-500 text-white px-3 py-1 rounded-full font-bold">Visualisasi Pohon Paragraf</div>
+              
+              <!-- Crown/Leaves Area (Ide Pendukung) -->
+              <div class="w-48 h-48 bg-emerald-400/90 rounded-full mx-auto flex items-center justify-center text-white font-bubble p-4 shadow-lg border-4 border-emerald-500 animate-pulse relative z-10">
+                <div class="text-center">
+                  <span class="block text-4xl">🍃🍂</span>
+                  <span class="text-sm font-bold">DAUN & DAHAN</span>
+                  <p class="text-[10px] leading-tight mt-1 opacity-90">Ide Pendukung (Penjelasan, contoh, bukti, rincian data)</p>
+                </div>
+              </div>
+
+              <!-- Trunk Area (Ide Pokok) -->
+              <div class="w-16 h-28 bg-amber-700/90 mx-auto -mt-4 relative z-0 flex items-center justify-center text-amber-100 font-bubble text-xs shadow-inner">
+                <div class="transform -rotate-90 font-bold whitespace-nowrap">BATANG UTAMA</div>
+              </div>
+
+              <!-- Roots Area (Ide Pokok Pondasi) -->
+              <div class="w-32 h-14 bg-amber-800/80 rounded-t-2xl mx-auto -mt-2 flex items-center justify-center text-yellow-100 font-bubble text-xs font-bold border-t border-amber-900">
+                🌱 IDE POKOK / GAGASAN UTAMA
+              </div>
+
+              <div class="mt-4 text-xs text-slate-600 font-semibold bg-white/60 p-2 rounded-xl">
+                Paragraf itu seperti pohon: Tanpa batang utama (Ide Pokok), ranting/daun (Ide Pendukung) tidak akan memiliki tempat tumbuh!
+              </div>
+            </div>
+
+            <!-- Penjelasan Tekstual Teori -->
+            <div class="space-y-4">
+              <div class="p-4 bg-lime-50 rounded-2xl border-l-4 border-lime-500">
+                <h4 class="font-bubble font-bold text-lime-800 text-lg mb-1">🌟 Apa itu Ide Pokok?</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  Ide pokok (disebut juga gagasan utama) adalah <strong>inti atau pikiran utama</strong> yang dibahas dalam suatu paragraf. Biasanya bersembunyi di dalam <strong>Kalimat Utama</strong> yang terletak di awal paragraf (deduktif) atau di akhir (induktif).
+                </p>
+              </div>
+
+              <div class="p-4 bg-orange-50 rounded-2xl border-l-4 border-orange-400">
+                <h4 class="font-bubble font-bold text-orange-800 text-lg mb-1">🍂 Apa itu Ide Pendukung?</h4>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  Ide pendukung (gagasan penjelas) adalah kalimat-kalimat yang berfungsi memberikan <strong>keterangan tambahan, penjelasan rinci, atau contoh nyata</strong> untuk menyokong ide pokok tersebut.
+                </p>
+              </div>
+
+              <!-- Interactive Toggle Switch Latihan -->
+              <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 text-xs md:text-sm">
+                <h5 class="font-bold text-indigo-800 mb-2 flex items-center gap-1">🔬 Geser Kacamata Detektif:</h5>
+                <p class="italic text-slate-600 mb-2">
+                  "Lidah buaya dikenal memiliki banyak kegunaan untuk tubuh. Lendir tanaman ini berkhasiat menyuburkan rambut. Selain itu, gel lidah buaya dapat mengobati luka bakar ringan di kulit."
+                </p>
+                <div class="flex flex-col gap-1 border-t pt-2 text-slate-700">
+                  <div>🟢 <strong>Ide Pokok:</strong> Kegunaan lidah buaya bagi tubuh manusia.</div>
+                  <div>🟡 <strong>Ide Pendukung:</strong> Menyuburkan rambut & mengobati luka bakar ringan.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AREA MATERI 3: MENYUSUN RINGKASAN LISAN -->
+      <div id="materi-content-3" class="hidden space-y-6 animate-fade-in">
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-xl space-y-6">
+          <div class="flex flex-col md:flex-row items-start md:items-center gap-4 border-b pb-4">
+            <span class="text-5xl">📢</span>
+            <div>
+              <h3 class="font-bubble text-2xl md:text-3xl text-slate-800 font-bold">Misi 3: Menyusun Ringkasan dari Penjelasan yang Didengar</h3>
+              <p class="text-sm text-slate-500">Mengembangkan kecakapan menyimak secara cermat untuk menyusun intisari lisan.</p>
+            </div>
+          </div>
+
+          <p class="text-slate-600 leading-relaxed">
+            Pernahkah kalian mendengarkan penjelasan dari bapak/ibu guru di depan kelas, lalu ingin merangkumnya agar mudah diingat? Nah, menyusun ringkasan dari penjelasan lisan memerlukan telinga detektif yang super fokus!
+          </p>
+
+          <!-- Jalur Petualangan 4 Langkah Menyusun Ringkasan -->
+          <div class="relative pt-4">
+            <h4 class="font-bubble text-lg font-bold text-emerald-800 text-center mb-6">🎯 4 Langkah Emas Detektif Ringkasan</h4>
+            
+            <div class="grid md:grid-cols-4 gap-4 relative z-10">
+              <!-- Langkah 1 -->
+              <div class="bg-gradient-to-b from-sky-100 to-sky-50 border-t-4 border-sky-400 p-4 rounded-2xl text-center shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-sky-400 text-white font-bubble rounded-full flex items-center justify-center text-lg font-bold shadow-md">1</div>
+                <span class="text-3xl block mt-4 mb-2">👂 SIMAK</span>
+                <h5 class="font-bold text-slate-800 text-sm mb-1">Dengar Saksama</h5>
+                <p class="text-xs text-slate-500">Fokus penuh, dengarkan setiap kalimat yang diucapkan pembicara.</p>
+              </div>
+
+              <!-- Langkah 2 -->
+              <div class="bg-gradient-to-b from-yellow-100 to-yellow-50 border-t-4 border-yellow-400 p-4 rounded-2xl text-center shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-yellow-400 text-white font-bubble rounded-full flex items-center justify-center text-lg font-bold shadow-md">2</div>
+                <span class="text-3xl block mt-4 mb-2">✍️ CATAT</span>
+                <h5 class="font-bold text-slate-800 text-sm mb-1">Gagasan Penting</h5>
+                <p class="text-xs text-slate-500">Tulis kata-kata kunci dan ide pokok yang kamu temukan dari suara.</p>
+              </div>
+
+              <!-- Langkah 3 -->
+              <div class="bg-gradient-to-b from-emerald-100 to-emerald-50 border-t-4 border-emerald-400 p-4 rounded-2xl text-center shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-emerald-400 text-white font-bubble rounded-full flex items-center justify-center text-lg font-bold shadow-md">3</div>
+                <span class="text-3xl block mt-4 mb-2">🔗 RANGKAI</span>
+                <h5 class="font-bold text-slate-800 text-sm mb-1">Gunakan Konjungsi</h5>
+                <p class="text-xs text-slate-500">Satukan gagasan tersebut memakai kata hubung yang tepat.</p>
+              </div>
+
+              <!-- Langkah 4 -->
+              <div class="bg-gradient-to-b from-purple-100 to-purple-50 border-t-4 border-purple-400 p-4 rounded-2xl text-center shadow-sm relative">
+                <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-purple-400 text-white font-bubble rounded-full flex items-center justify-center text-lg font-bold shadow-md">4</div>
+                <span class="text-3xl block mt-4 mb-2">✨ SUNTING</span>
+                <h5 class="font-bold text-slate-800 text-sm mb-1">Rapikan Kalimat</h5>
+                <p class="text-xs text-slate-500">Periksa ejaan dan tata bahasa agar mudah dibaca orang lain.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulator Penjelasan Lisan yang Bisa Berbicara -->
+          <div class="bg-emerald-50 rounded-3xl p-5 border-2 border-dashed border-emerald-300 space-y-4">
+            <h4 class="font-bubble font-bold text-emerald-800 text-base md:text-lg flex items-center gap-2">
+              🔊 Kotak Simulasi Suara (Telinga Tajam Detektif)
+            </h4>
+            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col sm:flex-row items-center gap-4">
+              <button onclick="readTextSimulated()" class="px-5 py-3 bg-emerald-500 hover:bg-emerald-600 active:scale-95 transition-all text-white font-bubble font-bold text-sm rounded-xl shadow flex items-center gap-2 shrink-0">
+                🔊 Simak Suara Guru
+              </button>
+              <div class="text-xs md:text-sm text-slate-600">
+                <p class="font-bold text-slate-700">Teks yang dibacakan guru:</p>
+                <span class="italic" id="audio-sim-text">"Penebangan liar di pegunungan berpotensi besar merusak paru-paru bumi sehingga memicu tanah longsor yang merugikan pemukiman warga di bawahnya."</span>
+              </div>
+            </div>
+            <div class="bg-white p-4 rounded-xl text-xs md:text-sm border border-slate-100">
+              💡 <strong>Hasil Ringkasan yang Tepat:</strong> Penebangan liar merusak hutan dan memicu tanah longsor yang membahayakan pemukiman warga.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Navigasi Belajar -->
+      <div class="bg-yellow-100 rounded-2xl p-5 text-center border-b-4 border-yellow-500 space-y-3">
+        <h4 class="font-bubble font-bold text-yellow-800 text-lg">Siap Menguji Kehebatan Analisismu?</h4>
+        <p class="text-xs md:text-sm text-yellow-900 max-w-xl mx-auto">Kami telah menyediakan 20 buah soal petualangan yang sangat menarik dan warna-warni demi meraih Medali Detektif Utama!</p>
+        <button onclick="startQuizDirectly()" class="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all text-white font-bubble font-bold text-lg rounded-2xl shadow-lg border-b-4 border-pink-700">
+          🎮 Mulai Game Evaluasi (20 Soal)
+        </button>
+      </div>
+    </section>
+
+    <!-- ---------------- PAGE 3: GAME EVALUASI / QUIZ ---------------- -->
+    <section id="page-quiz" class="hidden space-y-6 animate-fade-in">
+      <!-- Info Header Kuis -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl animate-bounce">⏱️</span>
+          <div>
+            <div class="text-xs text-slate-500 font-bold">Progress Detektif:</div>
+            <div class="font-bubble text-lg font-bold text-indigo-600 flex items-center gap-1" id="quiz-question-counter">
+              Soal 1 dari 20
+            </div>
+          </div>
+        </div>
+        
+        <!-- Score Tracker -->
+        <div class="flex items-center gap-3">
+          <div class="text-right">
+            <div class="text-xs text-slate-500 font-bold">Skor Saat Ini:</div>
+            <div class="font-bubble text-lg font-bold text-emerald-600" id="quiz-score-badge">
+              ⭐ 0 Poin
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="w-full bg-slate-200 h-4 rounded-full overflow-hidden shadow-inner relative">
+        <div id="quiz-progress-fill" class="bg-gradient-to-r from-indigo-500 via-pink-500 to-emerald-400 h-full w-0 transition-all duration-300"></div>
+      </div>
+
+      <!-- Kotak Soal Terformat Cantik -->
+      <div class="bg-white rounded-3xl p-6 md:p-8 border border-slate-100 shadow-xl space-y-6 relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-24 h-24 bg-indigo-50 rounded-full"></div>
+        
+        <!-- Kategori Soal -->
+        <span id="quiz-category" class="px-3 py-1 bg-indigo-100 text-indigo-700 font-bubble text-xs font-bold rounded-full uppercase tracking-wider relative z-10 inline-block">
+          Analisis Informasi
+        </span>
+
+        <!-- Bagian Audio Lisan Simulator (Opsional untuk Soal Ringkasan Lisan) -->
+        <div id="simulated-audio-box" class="hidden bg-emerald-50 rounded-2xl p-4 border border-emerald-200 space-y-2">
+          <span class="text-xs font-bold text-emerald-700 block">📢 AUDIO LISAN DETEKTIF:</span>
+          <div class="flex items-center gap-3">
+            <button onclick="readCurrentQuestionAudio()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bubble font-bold text-xs rounded-xl shadow-sm flex items-center gap-1 animate-pulse">
+              🔊 Putar Audio / Baca Lisan
+            </button>
+            <p class="text-xs text-slate-500 font-medium italic">Simak baik-baik teks suara ini!</p>
+          </div>
+        </div>
+
+        <!-- Teks Stimulus / Bacaan (Bila ada) -->
+        <div id="quiz-stimulus-box" class="bg-gradient-to-r from-amber-50 to-orange-50 p-4 md:p-5 rounded-2xl border-l-4 border-amber-400 text-sm md:text-base leading-relaxed font-medium">
+          "Komodo merupakan kadal terbesar..."
+        </div>
+
+        <!-- Kalimat Pertanyaan Utama -->
+        <h4 id="quiz-question-text" class="font-bubble text-xl md:text-2xl text-slate-800 font-bold leading-snug">
+          Apakah makanan utama dari komodo?
+        </h4>
+
+        <!-- Pilihan Ganda -->
+        <div class="grid md:grid-cols-2 gap-4 pt-2" id="quiz-options-container">
+          <!-- Tombol Opsi akan dimuat lewat javascript -->
+        </div>
+      </div>
+
+      <!-- Pop-up Kuis Umpan Balik (Benar/Salah) di bawah soal -->
+      <div id="quiz-feedback" class="hidden rounded-3xl p-5 border-b-8 shadow-lg animate-fade-in flex flex-col md:flex-row items-center gap-4">
+        <span id="feedback-emoji" class="text-5xl">🎉</span>
+        <div class="space-y-1">
+          <h5 id="feedback-title" class="font-bubble text-lg md:text-xl font-bold">Sangat Luar Biasa!</h5>
+          <p id="feedback-explanation" class="text-xs md:text-sm text-slate-700 leading-relaxed">
+            Ini adalah penjelasan yang sangat detail...
+          </p>
+        </div>
+        <button onclick="goToNextQuestion()" class="md:ml-auto px-5 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bubble font-bold text-sm rounded-xl shadow-md transition-all whitespace-nowrap">
+          Soal Selanjutnya &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ---------------- PAGE 4: HASIL / REPORT CARD & SERTIFIKAT ---------------- -->
+    <section id="page-result" class="hidden space-y-8 animate-fade-in">
+      <div class="bg-white rounded-3xl p-6 md:p-10 border border-slate-100 shadow-xl text-center space-y-6 relative overflow-hidden">
+        <div class="absolute -top-12 -right-12 w-32 h-32 bg-yellow-100 rounded-full blur-xl opacity-70"></div>
+        <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-pink-100 rounded-full blur-xl opacity-70"></div>
+
+        <span class="text-8xl block mascot-bounce">🏆</span>
+        <h2 class="font-bubble text-3xl md:text-4xl text-slate-800 font-bold">Misi Selesai, Detektif Hebat!</h2>
+        <p class="text-slate-500 max-w-md mx-auto -mt-2">Kamu telah berjuang gigih menyelesaikan 20 teka-teki Bahasa Indonesia Kelas 5!</p>
+
+        <!-- Ringkasan Nilai -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4">
+          <div class="bg-blue-50 p-4 rounded-2xl text-center border border-blue-100">
+            <span class="text-xs font-bold text-blue-600 block uppercase">Benar</span>
+            <span class="font-bubble text-2xl md:text-3xl font-extrabold text-blue-800" id="result-correct-count">18 / 20</span>
+          </div>
+          <div class="bg-red-50 p-4 rounded-2xl text-center border border-red-100">
+            <span class="text-xs font-bold text-red-600 block uppercase">Salah</span>
+            <span class="font-bubble text-2xl md:text-3xl font-extrabold text-red-800" id="result-wrong-count">2</span>
+          </div>
+          <div class="bg-purple-50 p-4 rounded-2xl text-center border border-purple-100">
+            <span class="text-xs font-bold text-purple-600 block uppercase">Akurasi</span>
+            <span class="font-bubble text-2xl md:text-3xl font-extrabold text-purple-800" id="result-accuracy">90%</span>
+          </div>
+          <div class="bg-emerald-50 p-4 rounded-2xl text-center border border-emerald-100">
+            <span class="text-xs font-bold text-emerald-600 block uppercase">Skor Akhir</span>
+            <span class="font-bubble text-2xl md:text-3xl font-extrabold text-emerald-800" id="result-score-number">90</span>
+          </div>
+        </div>
+
+        <!-- Form Kustomisasi Nama Sertifikat -->
+        <div class="bg-gradient-to-r from-amber-500 to-yellow-400 p-6 rounded-3xl text-white max-w-xl mx-auto space-y-4 shadow-md">
+          <h4 class="font-bubble font-bold text-lg md:text-xl">🎓 Personalisasi Sertifikat Detektifmu</h4>
+          <p class="text-xs">Tuliskan namamu di bawah ini untuk mencetak sertifikat resmi dari Diko si Detektif Cerdas!</p>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="input-student-name" placeholder="Tulis nama lengkapmu..." class="flex-grow px-4 py-3 rounded-xl text-slate-800 font-bold placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-yellow-300">
+            <button onclick="updateCertificate()" class="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bubble font-bold rounded-xl transition-all shadow-md">
+              Buat Sertifikat!
+            </button>
+          </div>
+        </div>
+
+        <!-- Rancang Sertifikat Visual Interaktif -->
+        <div id="certificate-visual" class="hidden bg-white border-8 border-double border-yellow-500 p-6 md:p-10 rounded-3xl max-w-3xl mx-auto text-center space-y-6 relative shadow-2xl overflow-hidden rainbow-bg">
+          <!-- Pita Hiasan Pojok -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-yellow-400 transform rotate-45 translate-x-12 -translate-y-12"></div>
+          
+          <div class="space-y-2 relative z-10">
+            <span class="text-5xl">🎖️</span>
+            <h3 class="font-bubble text-3xl font-extrabold text-indigo-900 tracking-wide uppercase">Sertifikat Kelulusan Detektif</h3>
+            <p class="text-xs text-indigo-700 font-bold uppercase tracking-widest">Diberikan Kepada Siswa Berprestasi Kelas 5</p>
+          </div>
+
+          <div class="space-y-2 relative z-10">
+            <p class="text-sm text-slate-600 italic">Sebagai apresiasi atas keberhasilan menuntaskan seluruh tantangan analisis dalam:</p>
+            <h4 id="cert-display-name" class="font-bubble text-3xl md:text-4xl font-black text-rose-600 border-b-2 border-indigo-200 inline-block px-6 pb-2">
+              [Nama Siswa]
+            </h4>
+          </div>
+
+          <p class="text-xs md:text-sm text-slate-700 max-w-md mx-auto font-medium leading-relaxed">
+            Dinyatakan mahir dalam mendeteksi <strong>Informasi Teks (ADiKSiMBa)</strong>, memetakan <strong>Ide Pokok & Pendukung</strong>, serta tangguh dalam menyusun <strong>Ringkasan Lisan</strong>.
+          </p>
+
+          <div class="flex items-center justify-around gap-4 pt-6 text-xs text-slate-500 border-t border-dashed border-indigo-300">
+            <div>
+              <p class="font-bold text-indigo-800 font-bubble text-lg" id="cert-score-label">Skor: 100</p>
+              <p>Game Evaluasi Kelas 5</p>
+            </div>
+            <div class="text-center">
+              <span class="text-3xl">🕵️‍♂️</span>
+              <p class="font-bold text-slate-800 mt-1">Diko Si Detektif</p>
+              <p class="text-[10px]">Pembimbing Utama</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aksi di Sertifikat -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <button onclick="printCertificate()" class="px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bubble font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+            🖨️ Cetak / Simpan PDF
+          </button>
+          <button onclick="resetQuiz()" class="px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bubble font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+            🔄 Ulangi Game Evaluasi
+          </button>
+          <button onclick="switchPage('home')" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl border border-slate-200 shadow transition-all flex items-center gap-2">
+            🏠 Kembali Ke Beranda
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Platform -->
+  <footer class="bg-slate-800 text-slate-400 py-6 text-center text-xs md:text-sm border-t-4 border-teal-500 mt-10">
+    <div class="max-w-6xl mx-auto px-4 space-y-2">
+      <p class="font-bold text-white text-base font-bubble">🏆 Bermain, Belajar, dan Berprestasi Bersama!</p>
+      <p>Dibuat khusus untuk Pembelajaran Kreatif Bahasa Indonesia Kurikulum Merdeka Fase C Kelas 5.</p>
+      <p>&copy; 2026 Platform Detektif Bahasa. Bebas digunakan untuk kegiatan edukasi guru dan murid.</p>
+    </div>
+  </footer>
+
+  <!-- ---------------- CODE JAVASCRIPT UTAMA ---------------- -->
+  <script>
+    // Audio Synthesizer Engine (Web Audio API) - Sepenuhnya Mandiri
+    const AudioEngine = {
+      ctx: null,
+      muted: false,
+      init() {
+        if (!this.ctx) {
+          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+      },
+      playTone(freq, type, duration, delay = 0) {
+        if (this.muted) return;
+        this.init();
+        setTimeout(() => {
+          try {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+            
+            gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + duration);
+            
+            osc.start();
+            osc.stop(this.ctx.currentTime + duration);
+          } catch(e) {}
+        }, delay * 1000);
+      },
+      correct() {
+        this.playTone(523.25, 'sine', 0.1, 0);   // C5
+        this.playTone(659.25, 'sine', 0.15, 0.08); // E5
+        this.playTone(783.99, 'sine', 0.3, 0.16);  // G5
+      },
+      wrong() {
+        this.playTone(220, 'sawtooth', 0.15, 0);  // A3
+        this.playTone(180, 'sawtooth', 0.3, 0.12);  // F3
+      },
+      click() {
+        this.playTone(800, 'sine', 0.05, 0);
+      },
+      victory() {
+        // Melodi kemenangan ceria
+        const notes = [261.63, 329.63, 392.00, 523.25, 392.00, 523.25];
+        const times = [0, 0.1, 0.2, 0.3, 0.45, 0.6];
+        notes.forEach((freq, i) => {
+          this.playTone(freq, 'sine', 0.25, times[i]);
+        });
+      }
+    };
+
+    function toggleMute() {
+      AudioEngine.muted = !AudioEngine.muted;
+      const btn = document.getElementById('btn-sound-toggle');
+      btn.innerText = AudioEngine.muted ? '🔇' : '🔊';
+      btn.classList.toggle('bg-red-100', AudioEngine.muted);
+      btn.classList.toggle('text-red-700', AudioEngine.muted);
+    }
+
+    // Navigasi Halaman
+    function switchPage(pageId) {
+      AudioEngine.click();
+      document.getElementById('page-home').classList.add('hidden');
+      document.getElementById('page-learn').classList.add('hidden');
+      document.getElementById('page-quiz').classList.add('hidden');
+      document.getElementById('page-result').classList.add('hidden');
+
+      document.getElementById('page-' + pageId).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Interaktif ADiKSiMBa
+    const adiksimbaDetails = {
+      apa: {
+        title: "🎁 Kata Tanya: Apa",
+        desc: "Digunakan untuk menanyakan benda, peristiwa, atau keadaan yang menjadi inti bacaan.",
+        example: "Pertanyaan: Apa satwa langka yang dibahas di atas? <br>Jawaban: Satwa yang dibahas adalah Komodo."
+      },
+      dimana: {
+        title: "📍 Kata Tanya: Di mana",
+        desc: "Digunakan untuk menanyakan tempat atau lokasi terjadinya peristiwa dalam teks.",
+        example: "Pertanyaan: Di mana Komodo hidup secara bebas? <br>Jawaban: Komodo hidup bebas di Taman Nasional Komodo, NTT."
+      },
+      kapan: {
+        title: "⏰ Kata Tanya: Kapan",
+        desc: "Digunakan untuk menanyakan waktu berlangsungnya kejadian (jam, hari, tanggal, atau tahun).",
+        example: "Pertanyaan: Kapan pemerintah mendirikan balai konservasi tersebut? <br>Jawaban: Balai konservasi didirikan sejak tahun 1980."
+      },
+      siapa: {
+        title: "🧒 Kata Tanya: Siapa",
+        desc: "Digunakan untuk mencari tahu tentang tokoh, orang, atau instansi pelaku yang terlibat dalam cerita.",
+        example: "Pertanyaan: Siapa pihak yang berupaya menjaga komodo dari kepunahan? <br>Jawaban: Pihak pelindung tersebut adalah pemerintah."
+      },
+      mengapa: {
+        title: "❓ Kata Tanya: Mengapa",
+        desc: "Digunakan untuk mengetahui penyebab, alasan, atau latar belakang suatu hal bisa terjadi.",
+        example: "Pertanyaan: Mengapa satwa Komodo terancam punah? <br>Jawaban: Karena jumlahnya makin sedikit akibat hilangnya habitat alami."
+      },
+      bagaimana: {
+        title: "⚙️ Kata Tanya: Bagaimana",
+        desc: "Digunakan untuk menanyakan cara, proses, keadaan, atau rincian kegiatan secara berurutan.",
+        example: "Pertanyaan: Bagaimana cara pemerintah menjaga kepunahan hewan purba ini? <br>Jawaban: Dengan cara mendirikan kawasan konservasi pelindung."
+      }
+    };
+
+    function showAdiksimbaDetail(key) {
+      AudioEngine.click();
+      const detail = adiksimbaDetails[key];
+      const box = document.getElementById('adiksimba-detail-box');
+      box.className = "p-5 bg-gradient-to-r from-pink-50 to-amber-50 rounded-2xl border-2 border-indigo-300 animate-fade-in space-y-2";
+      box.innerHTML = `
+        <h4 class="font-bubble text-lg font-bold text-slate-800 flex items-center gap-2">${detail.title}</h4>
+        <p class="text-sm text-slate-600 font-medium">${detail.desc}</p>
+        <div class="p-3 bg-white rounded-xl border border-indigo-100 text-xs text-slate-700">
+          <strong>Contoh Kasus:</strong><br>${detail.example}
+        </div>
+      `;
+    }
+
+    // Berpindah Tab Pembelajaran
+    function showLearnTopic(topicNum) {
+      AudioEngine.click();
+      // Reset all tabs
+      for(let i=1; i<=3; i++) {
+        document.getElementById(`materi-content-${i}`).classList.add('hidden');
+        document.getElementById(`tab-btn-${i}`).className = "px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-slate-100 text-slate-600";
+      }
+
+      // Set active
+      document.getElementById(`materi-content-${topicNum}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${topicNum}`);
+      if(topicNum === 1) activeBtn.className = "px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-pink-500 text-white shadow-md";
+      if(topicNum === 2) activeBtn.className = "px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-amber-500 text-white shadow-md";
+      if(topicNum === 3) activeBtn.className = "px-5 py-3 rounded-t-2xl font-bubble font-bold transition-all text-sm md:text-base flex items-center gap-2 bg-emerald-500 text-white shadow-md";
+    }
+
+    // Membaca Teks Lisan di Simulasi
+    function readTextSimulated() {
+      const text = document.getElementById('audio-sim-text').innerText;
+      speakTextNative(text);
+    }
+
+    function speakTextNative(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'id-ID'; // Menggunakan suara Indonesia
+        utterance.rate = 0.9;     // Kecepatan ramah anak
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Sistem pembaca lisan otomatis tidak didukung browser ini. Gunakan teks visual yang tersedia.");
+      }
+    }
+
+
+    // ---------------- DATABASE 20 SOAL EVALUASI ----------------
+    const quizQuestions = [
+      {
+        id: 1,
+        category: "Analisis Informasi",
+        stimulus: "Suku Asmat merupakan salah satu suku asli dari Papua. Mereka mendiami daerah pesisir yang dipenuhi rawa-rawa dan pepohonan bakau yang lebat. Suku Asmat sangat terkenal dengan seni ukir kayu tradisionalnya yang mendunia.",
+        question: "Berdasarkan teks di atas, di mana habitat tempat tinggal asli Suku Asmat berada?",
+        options: [
+          "Di dataran tinggi pegunungan bersalju",
+          "Di pulau terpencil bagian utara Jawa",
+          "Di daerah pesisir yang dipenuhi rawa dan hutan bakau Papua",
+          "Di tengah gurun pasir kering"
+        ],
+        answer: 2,
+        explanation: "Pintar! Suku Asmat tertulis mendiami daerah pesisir yang dipenuhi rawa-rawa dan pepohonan bakau di Papua."
+      },
+      {
+        id: 2,
+        category: "Analisis Informasi",
+        stimulus: "Batik tradisional dibuat dengan teknik tulis tangan menggunakan malam (lilin khusus). Malam tersebut dipanaskan di atas wajan kecil lalu diambil menggunakan canting untuk dilukis di kain mori putih.",
+        question: "Mengapa para perajin batik membutuhkan malam dalam proses pembuatan batik tradisional?",
+        options: [
+          "Agar kain menjadi lebih halus",
+          "Untuk merintangi warna agar tidak masuk ke bagian yang bermotif saat dicelup warna",
+          "Agar proses melukisnya bisa selesai dalam lima menit",
+          "Untuk mengharumkan kain mori putih"
+        ],
+        answer: 1,
+        explanation: "Hebat! Lilin malam berfungsi membatasi pewarnaan alami di kain sehingga motif canting tetap terbentuk."
+      },
+      {
+        id: 3,
+        category: "Analisis Informasi",
+        stimulus: "Ki Hajar Dewantara mendirikan Taman Siswa pada tanggal 3 Juli 1922 di Yogyakarta. Taman Siswa didirikan agar seluruh anak bangsa memiliki hak pendidikan yang setara tanpa memandang status sosial.",
+        question: "Kapan lembaga pendidikan Taman Siswa resmi didirikan oleh Ki Hajar Dewantara?",
+        options: [
+          "17 Agustus 1945",
+          "3 Juli 1922",
+          "1 Juni 1945",
+          "2 Mei 1889"
+        ],
+        answer: 1,
+        explanation: "Sempurna! Lembaga Taman Siswa didirikan pada tanggal 3 Juli 1922 di Kota Yogyakarta."
+      },
+      {
+        id: 4,
+        category: "Analisis Informasi",
+        stimulus: "Thomas Alva Edison berhasil menemukan lampu pijar setelah melakukan ribuan kali eksperimen yang melelahkan. Ia tidak pernah menyerah meskipun sering kali menemui kegagalan di laboratorium pribadinya.",
+        question: "Siapa tokoh penemu tangguh yang diceritakan di dalam teks di atas?",
+        options: [
+          "Ki Hajar Dewantara",
+          "Albert Einstein",
+          "Thomas Alva Edison",
+          "Alexander Graham Bell"
+        ],
+        answer: 2,
+        explanation: "Benar sekali! Tokoh penemu lampu pijar yang gigih pantang menyerah tersebut adalah Thomas Alva Edison."
+      },
+      {
+        id: 5,
+        category: "Analisis Informasi",
+        stimulus: "",
+        question: "Kata tanya dalam konsep ADiKSiMBa yang paling tepat apabila kita ingin mengetahui alasan di balik kepunahan satwa komodo adalah...",
+        options: [
+          "Mengapa",
+          "Siapa",
+          "Bagaimana",
+          "Di mana"
+        ],
+        answer: 0,
+        explanation: "Luar biasa! Kata 'Mengapa' menanyakan alasan atau penyebab terjadinya suatu peristiwa (misal: penyebab kepunahan)."
+      },
+      {
+        id: 6,
+        category: "Analisis Informasi",
+        stimulus: "Sampah plastik sangat berbahaya bagi kelangsungan hidup biota laut. Sampah tersebut tidak bisa hancur dengan cepat di air dan sering kali tidak sengaja dikonsumsi oleh kura-kura karena menyerupai ubur-ubur.",
+        question: "Apa akibat yang paling mengerikan jika sampah plastik terus mengapung bebas di lautan?",
+        options: [
+          "Lautan menjadi indah penuh hiasan plastik",
+          "Menimbulkan bahaya kematian bagi penyu atau kura-kura laut",
+          "Ikan laut tumbuh semakin raksasa",
+          "Air laut terasa manis seperti madu"
+        ],
+        answer: 1,
+        explanation: "Tepat sekali! Penyu sering mengira plastik bening sebagai ubur-ubur, memakannya, dan berakibat keracunan berat."
+      },
+      {
+        id: 7,
+        category: "Analisis Informasi",
+        stimulus: "",
+        question: "Manakah dari empat pernyataan berikut yang merupakan informasi berupa 'FAKTA' yang tidak dapat didebat lagi kebenarannya?",
+        options: [
+          "Bunga mawar merah adalah bunga yang paling cantik sedunia",
+          "Indonesia merdeka pada tanggal 17 Agustus 1945",
+          "Menurutku, matematika itu sangat membosankan",
+          "Semua anjing di dunia ini berwarna cokelat"
+        ],
+        answer: 1,
+        explanation: "Pintar! Hari Kemerdekaan RI 17 Agustus 1945 adalah fakta sejarah sah, sedangkan pernyataan lainnya adalah opini/pendapat."
+      },
+      {
+        id: 8,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "",
+        question: "Di dalam susunan suatu paragraf yang benar, apa yang dimaksud dengan Ide Pokok?",
+        options: [
+          "Kalimat penjelas paling panjang di akhir halaman",
+          "Gagasan utama yang menjadi inti pokok pembahasan seluruh paragraf",
+          "Nama judul dari karangan atau cerpen",
+          "Pendapat pribadi yang dicetak tebal"
+        ],
+        answer: 1,
+        explanation: "Tepat! Ide Pokok adalah nyawa paragraf yang merupakan inti sari masalah utama yang sedang diuraikan."
+      },
+      {
+        id: 9,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "Lidah buaya dikenal memiliki manfaat yang melimpah bagi kesehatan tubuh kita. Gel lidah buaya sangat ampuh untuk melembapkan kulit yang terbakar matahari. Selain itu, kandungannya berkhasiat menyuburkan rambut.",
+        question: "Apakah ide pokok yang tepat untuk paragraf di atas?",
+        options: [
+          "Khasiat lidah buaya untuk mencerahkan kulit wajah",
+          "Cara praktis menanam tanaman lidah buaya di rumah",
+          "Berbagai macam manfaat lidah buaya bagi tubuh",
+          "Lendir lidah buaya rasanya pahit"
+        ],
+        answer: 2,
+        explanation: "Hebat! Inti utama paragraf tersebut membahas banyaknya manfaat lidah buaya bagi kesehatan tubuh kita."
+      },
+      {
+        id: 10,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "",
+        question: "Kalimat-kalimat yang bertugas menguraikan contoh, memberikan alasan, atau memaparkan detail dari sebuah ide pokok dinamakan...",
+        options: [
+          "Kalimat Utama",
+          "Ide Pokok",
+          "Kalimat Pendukung / Penjelas",
+          "Paragraf Baru"
+        ],
+        answer: 2,
+        explanation: "Benar! Kalimat pendukung bertugas menyokong kebenaran kalimat utama agar penjelasannya makin kuat."
+      },
+      {
+        id: 11,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "Bersepeda setiap hari mampu menguatkan otot kaki kita secara bertahap. Aktivitas mengayuh pedal melatih otot paha dan betis menjadi kuat. Selain itu, bersepeda juga meningkatkan daya tahan jantung.",
+        question: "Ide pokok paragraf di atas terletak di awal kalimat. Paragraf jenis ini disebut dengan paragraf...",
+        options: [
+          "Paragraf Induktif",
+          "Paragraf Deduktif",
+          "Paragraf Campuran",
+          "Paragraf Deskriptif"
+        ],
+        answer: 1,
+        explanation: "Tepat! Paragraf Deduktif memiliki ide pokok di bagian awal kalimat/paragraf."
+      },
+      {
+        id: 12,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "Menjaga kebersihan lingkungan sekolah dapat dilakukan dengan cara membuang sampah pada tempatnya. Murid juga bisa melaksanakan piket kelas setiap pagi. Kerja bakti membersihkan taman sekolah secara berkala juga perlu dilakukan.",
+        question: "Manakah di bawah ini yang BUKAN merupakan ide pendukung dari paragraf di atas?",
+        options: [
+          "Melaksanakan piket kebersihan kelas setiap pagi",
+          "Membuang bungkus jajanan sekolah sembarangan",
+          "Kerja bakti membersihkan taman sekolah secara berkala",
+          "Membuang seluruh sampah di tempat sampah yang tepat"
+        ],
+        answer: 1,
+        explanation: "Pintar! Membuang bungkus sembarangan justru bertentangan dengan isi paragraf tentang menjaga kebersihan."
+      },
+      {
+        id: 13,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "",
+        question: "Jika kamu menemukan sebuah paragraf yang meletakkan ide pokoknya di akhir paragraf, maka jenis paragraf tersebut dinamakan...",
+        options: [
+          "Paragraf Deduktif",
+          "Paragraf Induktif",
+          "Paragraf Narasi",
+          "Paragraf Persuasi"
+        ],
+        answer: 1,
+        explanation: "Keren! Paragraf Induktif ditandai dengan letak gagasan utamanya di akhir kalimat paragraf."
+      },
+      {
+        id: 14,
+        category: "Ide Pokok & Pendukung",
+        stimulus: "(1) Hutan lindung berperan penting mencegah erosi tanah. (2) Pepohonan lebat di hutan menyerap curah hujan tinggi ke dalam tanah. (3) Akar pohon mengikat butiran tanah agar tidak mudah tersapu arus air hujan deras. (4) Dengan begitu, potensi tanah longsor di lereng gunung berkurang.",
+        question: "Dari kutipan paragraf di atas, kalimat nomor berapakah yang bertindak sebagai IDE POKOK / KALIMAT UTAMA?",
+        options: [
+          "Kalimat nomor (1)",
+          "Kalimat nomor (2)",
+          "Kalimat nomor (3)",
+          "Kalimat nomor (4)"
+        ],
+        answer: 0,
+        explanation: "Hebat! Kalimat nomor (1) memuat topik utama tentang peran penting hutan lindung mencegah erosi tanah."
+      },
+      {
+        id: 15,
+        category: "Menyusun Ringkasan Lisan",
+        stimulus: "",
+        question: "Langkah pertama yang paling krusial sebelum kita mulai menyusun ringkasan dari penjelasan lisan yang dibacakan adalah...",
+        options: [
+          "Menutup telinga rapat-rapat",
+          "Menulis rangkuman tanpa menyimak teks sama sekali",
+          "Menyimak dan mendengarkan penjelasan lisan dengan penuh perhatian",
+          "Langsung bertanya ke teman tanpa mendengar pembicara"
+        ],
+        answer: 2,
+        explanation: "Sempurna! Mendengar dan menyimak adalah kunci utama menangkap informasi yang akan diringkas."
+      },
+      {
+        id: 16,
+        category: "Menyusun Ringkasan Lisan",
+        isLisan: true,
+        stimulus: "Menjaga kebersihan kelas adalah tugas bersama seluruh murid. Jangan malas piket pagi agar kelas terasa nyaman untuk belajar setiap hari.",
+        question: "Dengarkan lisan di atas. Manakah simpulan ringkasan informasi lisan yang paling sesuai?",
+        options: [
+          "Kebersihan kelas hanya menjadi tanggung jawab ketua kelas",
+          "Seluruh murid berkewajiban menjaga kebersihan kelas agar proses belajar terasa nyaman",
+          "Murid boleh absen dari piket jika mengantuk",
+          "Kelas yang kotor membuat murid makin rajin"
+        ],
+        answer: 1,
+        explanation: "Luar biasa! Ringkasan ini merangkum gagasan kebersihan kelas sebagai tanggung jawab bersama murid demi kenyamanan."
+      },
+      {
+        id: 17,
+        category: "Menyusun Ringkasan Lisan",
+        stimulus: "",
+        question: "Mengapa kita wajib mencatat 'Kata Kunci' saat sedang mendengarkan penjelasan lisan yang cukup panjang?",
+        options: [
+          "Agar buku tulis cepat habis",
+          "Agar tidak melupakan intisari atau gagasan paling penting dari penjelasan lisan tersebut",
+          "Supaya tangan kita kelihatan sibuk saja",
+          "Untuk diserahkan ke murid lain saat ujian"
+        ],
+        answer: 1,
+        explanation: "Keren! Kata kunci berfungsi sebagai jangkar memori agar kita tidak melupakan poin inti saat merangkai ringkasan."
+      },
+      {
+        id: 18,
+        category: "Menyusun Ringkasan Lisan",
+        isLisan: true,
+        stimulus: "Selama musim panas yang terik, kawanan semut rajin mengumpulkan dan menyimpan sereal gandum di lubang tanah sebagai persediaan musim dingin. Sebaliknya, belalang hanya sibuk bernyanyi malas-malasan hingga akhirnya ia kelaparan saat salju turun.",
+        question: "Dengarkan kisah di atas. Ringkasan yang paling tepat dari isi cerita di atas adalah...",
+        options: [
+          "Semut menolong belalang yang sangat mahir bernyanyi indah di salju",
+          "Kawanan semut selamat dari kelaparan karena rajin menabung makanan, sedangkan belalang kelaparan karena malas bekerja",
+          "Belalang berhasil mengumpulkan banyak makanan bersama kawanan semut di lumbung gandum",
+          "Semut malas bekerja saat salju turun"
+        ],
+        answer: 1,
+        explanation: "Tepat sekali! Ringkasan yang lengkap merangkum nasib kedua tokoh (semut yang rajin dan belalang yang malas) secara adil."
+      },
+      {
+        id: 19,
+        category: "Menyusun Ringkasan Lisan",
+        stimulus: "",
+        question: "Aturan penting apakah yang harus kita perhatikan ketika sedang menulis ringkasan dari sebuah teks?",
+        options: [
+          "Isi ringkasan boleh ditambah opini palsu buatan sendiri",
+          "Isi ringkasan harus tetap setia pada fakta dan isi teks asli tanpa mengubah maksud penulis",
+          "Ringkasan harus dibuat lebih panjang dari teks aslinya",
+          "Ejaan kata boleh diacak sembarangan"
+        ],
+        answer: 1,
+        explanation: "Hebat! Ringkasan yang baik tidak boleh melenceng atau menambahkan opini pribadi di luar isi teks tepercaya."
+      },
+      {
+        id: 20,
+        category: "Menyusun Ringkasan Lisan",
+        stimulus: "",
+        question: "Kata hubung (konjungsi) sebab-akibat manakah di bawah ini yang tepat untuk merangkai kalimat dalam ringkasan?",
+        options: [
+          "Atau",
+          "Sehingga / karena",
+          "Tetapi",
+          "Dan"
+        ],
+        answer: 1,
+        explanation: "Sempurna! Kata 'sehingga' atau 'karena' mengikat dua gagasan sebab-akibat agar menjadi kalimat ringkas terpadu."
+      }
+    ];
+
+    // State Game Evaluasi
+    let currentQuestionIndex = 0;
+    let correctAnswersCount = 0;
+    let selectedOptionIndex = null;
+    let quizSubmitted = false;
+
+    function startQuizDirectly() {
+      // Inisialisasi ulang state kuis
+      currentQuestionIndex = 0;
+      correctAnswersCount = 0;
+      selectedOptionIndex = null;
+      quizSubmitted = false;
+      
+      switchPage('quiz');
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      selectedOptionIndex = null;
+      document.getElementById('quiz-feedback').classList.add('hidden');
+      
+      const q = quizQuestions[currentQuestionIndex];
+      
+      // Update Counter
+      document.getElementById('quiz-question-counter').innerHTML = `Soal ${currentQuestionIndex + 1} dari 20`;
+      document.getElementById('quiz-score-badge').innerHTML = `⭐ ${correctAnswersCount * 5} Poin`;
+      
+      // Update Progress Bar
+      const progressPercent = ((currentQuestionIndex) / 20) * 100;
+      document.getElementById('quiz-progress-fill').style.width = `${progressPercent}%`;
+
+      // Update Kategori & Warna background berdasarkan tipe
+      const categoryBadge = document.getElementById('quiz-category');
+      categoryBadge.innerText = q.category;
+      if (q.category === "Analisis Informasi") {
+        categoryBadge.className = "px-3 py-1 bg-pink-100 text-pink-700 font-bubble text-xs font-bold rounded-full uppercase tracking-wider relative z-10 inline-block";
+      } else if (q.category === "Ide Pokok & Pendukung") {
+        categoryBadge.className = "px-3 py-1 bg-amber-100 text-amber-700 font-bubble text-xs font-bold rounded-full uppercase tracking-wider relative z-10 inline-block";
+      } else {
+        categoryBadge.className = "px-3 py-1 bg-emerald-100 text-emerald-700 font-bubble text-xs font-bold rounded-full uppercase tracking-wider relative z-10 inline-block";
+      }
+
+      // Handle Lisan Audio Mode (Untuk simulasi mendengarkan penjelasan lisan)
+      const audioBox = document.getElementById('simulated-audio-box');
+      if (q.isLisan) {
+        audioBox.classList.remove('hidden');
+      } else {
+        audioBox.classList.add('hidden');
+      }
+
+      // Update Stimulus
+      const stimBox = document.getElementById('quiz-stimulus-box');
+      if (q.stimulus && q.stimulus.trim() !== "") {
+        stimBox.innerHTML = `"${q.stimulus}"`;
+        stimBox.classList.remove('hidden');
+      } else {
+        stimBox.classList.add('hidden');
+      }
+
+      // Update Pertanyaan
+      document.getElementById('quiz-question-text').innerHTML = q.question;
+
+      // Update Pilihan Ganda
+      const optionsContainer = document.getElementById('quiz-options-container');
+      optionsContainer.innerHTML = '';
+      
+      q.options.forEach((opt, idx) => {
+        const char = String.fromCharCode(65 + idx); // A, B, C, D
+        const btn = document.createElement('button');
+        btn.onclick = () => selectOption(idx);
+        btn.id = `opt-btn-${idx}`;
+        btn.className = "p-4 text-left bg-white border-2 border-slate-200 rounded-2xl hover:bg-slate-50 hover:border-slate-400 active:scale-95 transition-all flex items-center gap-3 font-semibold text-slate-800 text-sm md:text-base";
+        btn.innerHTML = `
+          <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 font-bubble font-bold flex items-center justify-center border-b-2 border-slate-300 shrink-0">${char}</span>
+          <span>${opt}</span>
+        `;
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function readCurrentQuestionAudio() {
+      const q = quizQuestions[currentQuestionIndex];
+      if (q.stimulus) {
+        speakTextNative(q.stimulus);
+      }
+    }
+
+    function selectOption(index) {
+      if (selectedOptionIndex !== null) return; // Mencegah klik ganda sebelum beralih soal
+      
+      selectedOptionIndex = index;
+      const q = quizQuestions[currentQuestionIndex];
+      const isCorrect = (index === q.answer);
+
+      // Mainkan suara respons
+      if (isCorrect) {
+        correctAnswersCount++;
+        AudioEngine.correct();
+        showFeedback(true, q.explanation);
+      } else {
+        AudioEngine.wrong();
+        showFeedback(false, q.explanation);
+      }
+
+      // Beri warna penanda pada pilihan
+      q.options.forEach((_, idx) => {
+        const btn = document.getElementById(`opt-btn-${idx}`);
+        if (idx === q.answer) {
+          // Tombol jawaban yang benar (selalu diwarnai hijau)
+          btn.className = "p-4 text-left bg-emerald-100 border-2 border-emerald-400 rounded-2xl flex items-center gap-3 font-semibold text-emerald-800 text-sm md:text-base cursor-default";
+          btn.querySelector('span').className = "w-8 h-8 rounded-full bg-emerald-500 text-white font-bubble font-bold flex items-center justify-center border-b-2 border-emerald-700 shrink-0";
+        } else if (idx === index) {
+          // Jawaban murid salah (diwarnai merah)
+          btn.className = "p-4 text-left bg-red-100 border-2 border-red-400 rounded-2xl flex items-center gap-3 font-semibold text-red-800 text-sm md:text-base cursor-default";
+          btn.querySelector('span').className = "w-8 h-8 rounded-full bg-red-500 text-white font-bubble font-bold flex items-center justify-center border-b-2 border-red-700 shrink-0";
+        } else {
+          // Opsi lainnya
+          btn.className = "p-4 text-left bg-white border-2 border-slate-100 rounded-2xl flex items-center gap-3 font-semibold text-slate-400 text-sm md:text-base cursor-default opacity-50";
+        }
+      });
+    }
+
+    function showFeedback(isCorrect, explanation) {
+      const feedbackBox = document.getElementById('quiz-feedback');
+      const emoji = document.getElementById('feedback-emoji');
+      const title = document.getElementById('feedback-title');
+      const exp = document.getElementById('feedback-explanation');
+
+      feedbackBox.classList.remove('hidden');
+      
+      if (isCorrect) {
+        feedbackBox.className = "rounded-3xl p-5 border-b-8 border-emerald-600 bg-emerald-50 text-slate-800 shadow-lg animate-fade-in flex flex-col md:flex-row items-center gap-4";
+        emoji.innerText = "⭐🎉";
+        title.innerText = "YAY, KAMU BENAR!";
+        title.className = "font-bubble text-lg md:text-xl font-bold text-emerald-700";
+      } else {
+        feedbackBox.className = "rounded-3xl p-5 border-b-8 border-yellow-600 bg-yellow-50 text-slate-800 shadow-lg animate-fade-in flex flex-col md:flex-row items-center gap-4";
+        emoji.innerText = "🔍✨";
+        title.innerText = "AYO BELAJAR LAGI!";
+        title.className = "font-bubble text-lg md:text-xl font-bold text-amber-700";
+      }
+
+      exp.innerHTML = explanation;
+    }
+
+    function goToNextQuestion() {
+      AudioEngine.click();
+      if (currentQuestionIndex < 19) {
+        currentQuestionIndex++;
+        loadQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function finishQuiz() {
+      // Hentikan suara jika masih berbunyi
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      AudioEngine.victory();
+      switchPage('result');
+
+      const score = correctAnswersCount * 5; // 20 soal x 5 = maks 100
+      
+      document.getElementById('result-correct-count').innerText = `${correctAnswersCount} / 20`;
+      document.getElementById('result-wrong-count').innerText = `${20 - correctAnswersCount}`;
+      document.getElementById('result-accuracy').innerText = `${Math.round((correctAnswersCount / 20) * 100)}%`;
+      document.getElementById('result-score-number').innerText = `${score}`;
+
+      // Default Nama
+      document.getElementById('input-student-name').value = "";
+      document.getElementById('certificate-visual').classList.add('hidden');
+    }
+
+    // Pembuatan Sertifikat Kelulusan
+    function updateCertificate() {
+      AudioEngine.click();
+      const rawName = document.getElementById('input-student-name').value.trim();
+      const finalName = rawName !== "" ? rawName : "Detektif Hebat Indonesia";
+
+      const score = correctAnswersCount * 5;
+      
+      document.getElementById('cert-display-name').innerText = finalName;
+      document.getElementById('cert-score-label').innerText = `Skor Akhir: ${score}`;
+
+      // Tampilkan sertifikat
+      const certBox = document.getElementById('certificate-visual');
+      certBox.classList.remove('hidden');
+      certBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function printCertificate() {
+      AudioEngine.click();
+      
+      // Mengambil nama agar yakin sudah terisi
+      const rawName = document.getElementById('input-student-name').value.trim();
+      if (rawName === "") {
+        alert("Masukkan namamu terlebih dahulu di dalam kotak teks!");
+        return;
+      }
+
+      // Sembunyikan elemen lain untuk mode cetak yang bersih
+      window.print();
+    }
+
+    function resetQuiz() {
+      startQuizDirectly();
+    }
+  </script>
+</body>
+</html>
+
+
+### Deskripsi Singkat Fitur Unggulan Aplikasi:
+
+1. **Ruang Belajar Detektif Cilik**:
+   - **ADiKSiMBa (5W1H)**: Ditampilkan secara interaktif layaknya kelopak bunga atau awan berwarna-warni. Anak-anak cukup mengklik setiap komponen kata tanya untuk memunculkan penjelasan taktis beserta contoh kasus konkritnya.
+   - **Pohon Gagasan**: Merepresentasikan konsep paragraf deduktif/induktif secara visual. Ide Pokok berperan sebagai batang/akar pokok, sedangkan Ide Pendukung berperan sebagai daun rimbun dan cabang penjelas.
+   - **Langkah Menyusun Ringkasan Lisan**: Tampilan rute petualangan yang memandu murid menyimak, mencatat kata kunci, merangkai konjungsi, dan menyunting dengan penuh keceriaan.
+   
+2. **Game Evaluasi Interaktif (20 Soal Penuh Kejutan)**:
+   - Dirancang pas **20 soal** bermutu tinggi tentang ADiKSiMBa, struktur gagasan, dan ringkasan dari penjelasan lisan.
+   - Menyertakan **fitur simulasi lisan**: tombol audio akan menyuarakan stimulus teks lisan memakai sistem *Web Speech Synthesis* berbahasa Indonesia yang ramah anak.
+   
+3. **Sistem Suara Ceria (Web Audio API)**:
+   - Menghasilkan efek suara interaktif saat menjawab benar/salah dan ketika berhasil menang telak tanpa bergantung pada koneksi internet eksternal.
+
+4. **Sertifikat Kelulusan Kustom**:
+   - Memasukkan nama murid untuk melahirkan lembar sertifikat kelulusan yang penuh warna dan bisa diunduh/dicetak sebagai pajangan pencapaian belajar yang berkesan.
